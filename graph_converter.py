@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as font_manage
 
+# 엑셀 파일 불러와서 열기
 read_workbook = load_workbook("./bluehouse.xlsx")
 read_worksheet = read_workbook.active
 
@@ -17,11 +18,13 @@ for i in range(1, 151):
 kkma = Kkma()
 list_temp = []
 
+# 단어를 구분하여 저장
 for row in list_excel:
     list_temp = list_temp + kkma.nouns(row)
 
 list_result = []
 
+# 1음절 단어는 제외하고 저장 후, top 20 단어 저장
 for check in list_temp:
     if len(check) > 1:
         list_result.append(check)
